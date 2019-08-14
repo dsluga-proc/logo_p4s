@@ -36,15 +36,34 @@
 				color: #ed2137;
 			}
 		</style>
+		<script type="text/javascript">
+			function getUrlVars() {
+				var vars = {};
+				var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+					vars[key] = value;
+				});
+				return vars;
+			}
+			function getUrlParam(parameter){
+				var urlparameter = "SAP strežnik";
+				if(window.location.href.indexOf(parameter) > -1){
+					urlparameter = getUrlVars()[parameter];
+				}
+				return urlparameter;
+			}
+		</script>
 	</head>
 	<body>
 		<div class="outer">
 			<div class="middle">
 				<div class="inner">
 					<img src="processi_logo.png" id="logo_img">
-					<h1 id="server_desc">P4S razvoj</h1>
+					<h1 id="server_desc">SAP strežnik</h1>
 				</div>
 			</div>
 		</div>
+		<script>
+			document.getElementById("server_desc").innerHTML = decodeURI(getUrlParam('srv'));
+		</script>
 	</body>
 </html>
