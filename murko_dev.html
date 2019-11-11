@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Murko Logo</title>
+		<meta name="description" content="Murko SAP GUI Logo">
+		<meta name="author" content="David Sluga">
+		<style>
+			body {
+				font-family: Arial, Helvetica, sans-serif;
+				-webkit-touch-callout: none; /* iOS Safari */
+				-webkit-user-select: none;   /* Chrome 6.0+, Safari 3.1+, Edge & Opera 15+ */
+				-moz-user-select: none;      /* Firefox */
+				-ms-user-select: none;       /* IE 10+ and Edge */
+				user-select: none;           /* Non-prefixed version, currently supported by Chrome and Opera */
+			}
+			.outer {
+				display: table;
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+			}
+			.middle {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.inner {
+				margin-left: auto;
+				margin-right: auto;
+				width: 400px;
+			}
+			.inner #logo_img {
+				width: 100%;
+				height: auto;
+			}
+			.inner #server_desc {
+				text-align: center;
+				font-size: 2.5em;
+				color: #00a0c6;
+				cursor: default;
+			}
+		</style>
+		<script type="text/javascript">
+			document.oncontextmenu = new Function("return false;");
+			function getUrlVars() {
+				var vars = {};
+				var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+					vars[key] = value;
+				});
+				return vars;
+			}
+			function getUrlParam(parameter){
+				var urlparameter = "SAP strežnik";
+				if(window.location.href.indexOf(parameter) > -1){
+					urlparameter = getUrlVars()[parameter];
+				}
+				return urlparameter;
+			}
+		</script>
+	</head>
+	<body onmousedown = 'return false' onselectstart = 'return false' oncopy = 'return false' oncut = 'return false'>
+		<div class="outer">
+			<div class="middle">
+				<div class="inner">
+					<img src="murko_logo.png" id="logo_img">
+					<h1 id="server_desc">SAP strežnik</h1>
+				</div>
+			</div>
+		</div>
+		<script>
+			document.getElementById("server_desc").innerHTML = decodeURI(getUrlParam('srv'));
+		</script>
+	</body>
+</html>
